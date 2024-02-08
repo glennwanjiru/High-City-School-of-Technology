@@ -147,12 +147,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountForm.Designer.vb">
-      <DependentUpon>AccountForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AccountForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FirebaseInitForm.Designer.vb">
       <DependentUpon>FirebaseInitForm.vb</DependentUpon>
     </Compile>
@@ -188,9 +182,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AccountForm.resx">
-      <DependentUpon>AccountForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.vb</DependentUpon>
     </EmbeddedResource>

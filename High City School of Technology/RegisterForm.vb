@@ -2,23 +2,13 @@
 Imports Firebase.Database
 
 Public Class RegisterForm
-    ' Declare a private variable to store the FirebaseClient instance
-    Private firebaseClient As FirebaseClient
+    Private firebaseClient As FirebaseClient ' Declare a field to store the FirebaseClient instance
 
-    ' Constructor that accepts a FirebaseClient parameter
+    ' Constructor that takes a FirebaseClient instance as a parameter
     Public Sub New(firebaseClient As FirebaseClient)
-        ' Initialize the FirebaseClient instance
-        Me.firebaseClient = firebaseClient
-
-        ' This call is required by the designer.
         InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        ' Your other initialization code, if any...
+        Me.firebaseClient = firebaseClient
     End Sub
-
-    ' ... (other code)
 
     ' Event handler for the registration button click
     Private Async Sub RegisterButton_Click(sender As Object, e As EventArgs) Handles RegisterButton.Click
@@ -45,7 +35,7 @@ Public Class RegisterForm
             .Country = CountryTextBox.Text
         }
 
-        ' Send the new user data to Firebase Realtime Database
+        ' Send the new user data to Firebase Realtime Database using the stored FirebaseClient instance
         Await WriteDataToFirebase(newUser)
 
         ' Optionally, you can clear the textboxes after registration
@@ -54,6 +44,26 @@ Public Class RegisterForm
         ' Display a success message or perform any additional actions
         MessageBox.Show("Registration successful!")
     End Sub
+
+    ' Method to clear all textboxes
+    Private Sub ClearTextBoxes()
+        For Each control As Control In Me.Controls
+            If TypeOf control Is TextBox Then
+                DirectCast(control, TextBox).Clear()
+            End If
+        Next
+    End Sub
+
+    ' Method to write user data to Firebase Realtime Database
+    Private Async Function WriteDataToFirebase(newUser As User) As Task
+        Try
+            ' Create a reference to the "users" node
+            Dim usersNode As FirebaseObject(Of User) = Await firebaseClient.Child("users").PostAsync(newUser)
+        Catch ex As Exception
+            ' Handle any exceptions that may occur during Firebase write operation
+            MessageBox.Show($"Firebase write error: {ex.Message}")
+        End Try
+    End Function
 
     ' ... (other code)
 End Class
