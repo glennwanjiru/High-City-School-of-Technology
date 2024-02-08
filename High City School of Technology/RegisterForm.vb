@@ -1,13 +1,20 @@
-﻿Imports MySqlConnector
-Imports Google
+﻿' RegisterForm.vb
+Imports Firebase.Database
 Imports FirebaseAdmin
 Imports Google.Apis.Auth.OAuth2
 
-
-
 Public Class RegisterForm
-    ' Class-level variables to store registered information
-    Private registeredUsers As New List(Of User)
+    ' Firebase client for interacting with the Realtime Database
+    Private firebaseClient As FirebaseClient
+
+    ' Constructor that receives the Firebase client from the initialization form
+    Public Sub New(firebaseClient As FirebaseClient)
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Initialize the Firebase client
+        Me.firebaseClient = firebaseClient
+    End Sub
 
     ' Event handler for the registration button click
     Private Sub RegisterButton_Click(sender As Object, e As EventArgs) Handles RegisterButton.Click
@@ -34,8 +41,8 @@ Public Class RegisterForm
             .Country = CountryTextBox.Text
         }
 
-        ' Add the new user to the list
-        registeredUsers.Add(newUser)
+        ' Send the new user data to Firebase Realtime Database
+        WriteDataToFirebase(newUser)
 
         ' Optionally, you can clear the textboxes after registration
         ClearTextBoxes()
@@ -51,6 +58,12 @@ Public Class RegisterForm
                 DirectCast(control, TextBox).Clear()
             End If
         Next
+    End Sub
+
+    ' Method to write user data to Firebase Realtime Database
+    Private Sub WriteDataToFirebase(newUser As User)
+        ' Push the new user data to the "users" node in the database
+        firebaseClient.Child("users").Post(newUser)
     End Sub
 End Class
 
