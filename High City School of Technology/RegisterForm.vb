@@ -1,23 +1,27 @@
 ﻿' RegisterForm.vb
 Imports Firebase.Database
-Imports FirebaseAdmin
-Imports Google.Apis.Auth.OAuth2
 
 Public Class RegisterForm
-    ' Firebase client for interacting with the Realtime Database
+    ' Declare a private variable to store the FirebaseClient instance
     Private firebaseClient As FirebaseClient
 
-    ' Constructor that receives the Firebase client from the initialization form
+    ' Constructor that accepts a FirebaseClient parameter
     Public Sub New(firebaseClient As FirebaseClient)
+        ' Initialize the FirebaseClient instance
+        Me.firebaseClient = firebaseClient
+
         ' This call is required by the designer.
         InitializeComponent()
 
-        ' Initialize the Firebase client
-        Me.firebaseClient = firebaseClient
+        ' Add any initialization after the InitializeComponent() call.
+
+        ' Your other initialization code, if any...
     End Sub
 
+    ' ... (other code)
+
     ' Event handler for the registration button click
-    Private Sub RegisterButton_Click(sender As Object, e As EventArgs) Handles RegisterButton.Click
+    Private Async Sub RegisterButton_Click(sender As Object, e As EventArgs) Handles RegisterButton.Click
         ' Determine the gender based on the selected checkboxes
         Dim gender As String
         If MaleCheckBox.Checked Then
@@ -42,7 +46,7 @@ Public Class RegisterForm
         }
 
         ' Send the new user data to Firebase Realtime Database
-        WriteDataToFirebase(newUser)
+        Await WriteDataToFirebase(newUser)
 
         ' Optionally, you can clear the textboxes after registration
         ClearTextBoxes()
@@ -51,20 +55,7 @@ Public Class RegisterForm
         MessageBox.Show("Registration successful!")
     End Sub
 
-    ' Method to clear all textboxes
-    Private Sub ClearTextBoxes()
-        For Each control As Control In Me.Controls
-            If TypeOf control Is TextBox Then
-                DirectCast(control, TextBox).Clear()
-            End If
-        Next
-    End Sub
-
-    ' Method to write user data to Firebase Realtime Database
-    Private Sub WriteDataToFirebase(newUser As User)
-        ' Push the new user data to the "users" node in the database
-        firebaseClient.Child("users").Post(newUser)
-    End Sub
+    ' ... (other code)
 End Class
 
 ' User class to represent an individual
