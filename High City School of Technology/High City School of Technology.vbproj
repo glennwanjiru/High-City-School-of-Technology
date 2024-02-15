@@ -180,6 +180,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TheAccounts.Designer.vb">
+      <DependentUpon>TheAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TheAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Home.resx">

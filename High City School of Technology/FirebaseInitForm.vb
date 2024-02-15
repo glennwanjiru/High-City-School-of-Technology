@@ -16,7 +16,7 @@ Public Class FirebaseInitForm
             })
 
             ' Replace "your-firebase-database-url" with your actual Firebase Realtime Database URL
-            Dim firebaseClient As FirebaseClient = New FirebaseClient("https://console.firebase.google.com/project/high-city-school-of-technology/firestore/data/~2F")
+            Dim firebaseClient As FirebaseClient = New FirebaseClient("https://high-city-school-of-technology-default-rtdb.firebaseio.com/")
 
             ' Open the RegisterForm and pass the FirebaseClient instance
             Dim registerForm As New RegisterForm(firebaseClient)
