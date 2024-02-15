@@ -43,6 +43,7 @@ Partial Class RegisterForm
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.RegisterButton = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'FemaleCheckBox
@@ -130,8 +131,9 @@ Partial Class RegisterForm
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel1.BackColor = System.Drawing.Color.Snow
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.FemaleCheckBox)
         Me.Panel1.Controls.Add(Me.DoB)
         Me.Panel1.Controls.Add(Me.CountryTextBox)
@@ -150,7 +152,7 @@ Partial Class RegisterForm
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.PeachPuff
         Me.Label9.Font = New System.Drawing.Font("Poppins", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(22, 359)
+        Me.Label9.Location = New System.Drawing.Point(9, 215)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(100, 37)
         Me.Label9.TabIndex = 19
@@ -215,7 +217,8 @@ Partial Class RegisterForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Poppins SemiBold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(379, 110)
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label3.Location = New System.Drawing.Point(379, 81)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(94, 34)
         Me.Label3.TabIndex = 13
@@ -225,10 +228,10 @@ Partial Class RegisterForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Bauhaus 93", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(218, 54)
+        Me.Label2.Font = New System.Drawing.Font("Bauhaus 93", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(77, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(420, 33)
+        Me.Label2.Size = New System.Drawing.Size(699, 54)
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "High City School of Technology"
         '
@@ -237,7 +240,7 @@ Partial Class RegisterForm
         Me.NameTexBox.AutoSize = True
         Me.NameTexBox.BackColor = System.Drawing.Color.PeachPuff
         Me.NameTexBox.Font = New System.Drawing.Font("Poppins", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NameTexBox.Location = New System.Drawing.Point(22, 137)
+        Me.NameTexBox.Location = New System.Drawing.Point(9, 3)
         Me.NameTexBox.Name = "NameTexBox"
         Me.NameTexBox.Size = New System.Drawing.Size(81, 37)
         Me.NameTexBox.TabIndex = 11
@@ -246,9 +249,12 @@ Partial Class RegisterForm
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.PeachPuff
-        Me.Panel2.Location = New System.Drawing.Point(24, 137)
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.NameTexBox)
+        Me.Panel2.Controls.Add(Me.Label9)
+        Me.Panel2.Location = New System.Drawing.Point(12, 137)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(754, 259)
+        Me.Panel2.Size = New System.Drawing.Size(814, 259)
         Me.Panel2.TabIndex = 21
         '
         'RegisterButton
@@ -269,7 +275,6 @@ Partial Class RegisterForm
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.RegisterButton)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -277,12 +282,13 @@ Partial Class RegisterForm
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.NameTexBox)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "RegisterForm"
         Me.Text = "RegisterForm"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
